@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" readonly class="display">
+        <div class="calculator">
+            <button  id="reset" class="btn">AC</button>
+            <button onclick="del()" class="btn">DEL</button>
+            <button onclick="inputValue('%')" class="btn">%</button>
+            <button onclick="inputValue('/')" class="btn">/</button>
+            <button onclick="inputValue('7')">7</button>
+           <button onclick="inputValue('8')">8</button>
+            <button onclick="inputValue('9')">9</button>
+            <button onclick="inputValue('*')" class="btn">*</button>
+           
+            <button onclick="inputValue('4')">4</button>
+            <button onclick="inputValue('5')">5</button>
+            <button onclick="inputValue('6')">6</button>
+            <button onclick="inputValue('-')" class="btn">-</button>
+          
+            <button onclick="inputValue('1')">1</button>
+            <button onclick="inputValue('2')">2</button>
+            <button onclick="inputValue('3')">3</button>
+            <button onclick="inputValue('+')" class="btn">+</button>
+            <button onclick="inputValue('00')">00</button>
+           <button onclick="inputValue('0')">0</button>
+            <button onclick="inputValue('.')">.</button>
+            <button id="equal" class="btn">=</button>
+             </div>
+    </div>
+    <script>
+        let display = document.querySelector('.display');
+        function inputValue(input){
+            display.value += input;
+        }
+        let reset = document.getElementById('reset');
+        reset.onclick = function(){
+            display.value = " "
+        }
+        function del(){
+           display.value = display.value.slice(0, -1)
+        }
+        let equal = document.getElementById('equal');
+        equal.onclick = function(){
+            try{
+                display.value = eval(display.value.replace('%', '/100'));
+            }catch(error){
+                display.value = 'Error'
+            }
+        }
+    </script>
+</body>
+</html>
